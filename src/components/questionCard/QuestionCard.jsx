@@ -5,12 +5,12 @@ const QuestionCard = ({questionsData, score, setScore, count, setCount, modal, s
     const [timer, setTimer] = useState(15)
 
     const approwedChoice = (e) => {
-        const checkAnswer = e.currentTarget.value == questionsData[count]?.correct_answer
+        const checkAnswer = e.currentTarget.value === questionsData[count]?.correct_answer
         if(checkAnswer){
             setScore(score + 10)
         }
         setCount(count + 1)
-        if(count  == 9){
+        if(count  === 9){
             setModal(true)
         }
         setTimer(15)
@@ -21,7 +21,7 @@ const QuestionCard = ({questionsData, score, setScore, count, setCount, modal, s
             if(timer > 0){
                 setTimer(timer - 1)
             }
-            if(timer == 0 && count < 10) {
+            if(timer === 0 && count < 10) {
                 setCount(count + 1)
                 setTimer(15)
             }else if (count >= 10){
@@ -31,7 +31,7 @@ const QuestionCard = ({questionsData, score, setScore, count, setCount, modal, s
         return () => {
             clearInterval(interval)
         }
-    }, [timer])
+    }, [timer, count, setCount, setModal])
 
     
 
