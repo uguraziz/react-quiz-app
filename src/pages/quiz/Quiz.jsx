@@ -18,7 +18,7 @@ const Quiz = () => {
       setQuestionsData(data)
     }
     getData();
-  }, [])
+  }, [amount, difficulty])
 
   return (
     <div className='quiz'>
